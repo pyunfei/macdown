@@ -22,7 +22,23 @@
 
 
 .navbar-right {
-  margin-right: 40px;
   display: flex;
   align-items: center;
+}
+
+.nav-item-github {
+  width: 100px;
+  height: 100px;
+}
+
+.item-github {
+  width: 100px;
+  height: 100px;
+}
+
+.github-img {
+  width: 100px;
+    right: 0;
+    top: 0;
+    position: absolute;
 }

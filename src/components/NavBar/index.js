@@ -146,6 +146,11 @@ const NavBar = (props) => {
           <Avatar size="large">雲飛</Avatar>
         </Popover>
       </div>
+      <div className='nav-item-github'>
+        <a href="https://github.com/pyunfei" className='item-github'>
+          <img className='github-img' src={require('../../assets/github.svg')} alt=""/>
+        </a>
+      </div>
     </div>
   </div>
 }
