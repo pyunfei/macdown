@@ -1,0 +1,28 @@
+.nice-navbar {
+  width: 100%;
+  margin-left: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.nav-title {
+  margin: 0;
+  margin-right: 20px;
+  text-shadow: 3px 3px 6px #d5effa;
+}
+
+.nav-item {
+  margin: 0 10px;
+}
+
+
+.navbar-right {
+  margin-right: 40px;
+  display: flex;
+  align-items: center;
+}
