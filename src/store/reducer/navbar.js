@@ -1,7 +1,7 @@
 import * as type from '../types';
 
 let initial = {
-  codeId: window.localStorage.getItem('code') || 'atomOneDark',
+  codeId: window.localStorage.getItem('CODE_ID') || 'atomOneDark',
 }
 
 export default (state = initial, action) => {

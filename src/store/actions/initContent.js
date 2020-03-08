@@ -8,7 +8,7 @@ const initConfig = () => {
   addStyleLabel(CONSTANT.STYLE_LABELS);
   replaceStyle(CONSTANT.BASIC_THEME_ID, TEMPLATE.basic)
   replaceStyle(CONSTANT.MARKDOWN_THEME_ID, TEMPLATE.style['normal'])
-  replaceStyle(CONSTANT.CODE_THEME_ID, TEMPLATE.code['vs2015']);
+  replaceStyle(CONSTANT.CODE_THEME_ID, TEMPLATE.code['atomOneLight']);
 
   return {
     type: 'init'

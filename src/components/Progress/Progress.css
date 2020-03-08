@@ -1,0 +1,14 @@
+
+.ant-progress-circle-trail {
+  /* stroke: red ; */
+}
+
+.progress-container {
+  position: absolute;
+  color: #d5effa;
+  top: 60px;
+  left: 50%;
+  z-index: 999;
+  box-shadow: 3px 3px 6px #d5effa;
+  transform: translate(-120%, 0);
+}

@@ -20,6 +20,14 @@
   margin: 0 10px;
 }
 
+.code-item{
+  display: flex;
+}
+
+.code-flag {
+  width: 25px;
+}
+
 
 .navbar-right {
   display: flex;

@@ -1,6 +1,5 @@
 export const replaceStyle = (id, css) => {
   const style = document.getElementById(id);
-  console.log(style)
   try {
     style.innerHTML = css;
   } catch (e) {
@@ -18,7 +17,7 @@ export const addStyleLabel = (STYLE_LABELS) => {
     style.id = name;
     const head = document.getElementsByTagName("head")[0];
     head.appendChild(style);
-    console.log(style);
+    // console.log(style);
   };
   STYLE_LABELS.forEach((name) => add(name));
 };

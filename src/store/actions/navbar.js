@@ -1,5 +1,5 @@
 import * as type from '../types';
-import { replaceStyle, addStyleLabel } from '../../util/helper';
+import { replaceStyle } from '../../util/helper';
 import * as CONSTANT from '../../util/constant';
 import TEMPLATE from '../../template';
 

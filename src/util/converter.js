@@ -38,7 +38,7 @@ export const parseHtml = () => {
   } catch (e) {
     message.error("请检查 CSS 文件是否编写正确！");
   }
-  console.log(res);
+  // console.log(res);
   const codeReg = /<pre([^>])*class="custom"([^>])*><code([^>])*style="([^"])*display: block;([^"])*"([^>])*>/g;
   const codeMatch = res.match(codeReg);
   if (codeMatch) {

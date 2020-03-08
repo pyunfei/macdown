@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import actions from './store/actions/initContent';
 
 import NavBar from './components/NavBar'
+import MyProgress from './components/Progress'
 
 import highlightjs from './util/langHiglight';
 import 'highlight.js/styles/atom-one-light.css'
@@ -24,12 +25,24 @@ showdown.setFlavor('github');
 // 引入样式
 
 const App = (props) => {
+  const [size, setSize] = useState(0);
+
   const onContentChange = (editor, data, value) => {
-    setMarkHtml(value);
-    // 格式化Code高亮
-    parseCode();
-    // 存储持久化
-    props.setContent(value);
+    // console.log(parseInt((value.length / 1024 / 100) * 100))
+    if(parseInt((value.length / 1024 / 100) * 100) > 100) {
+      return
+    }else {
+      // 计算当前字节数
+      // console.log(value.length / 1024 + 'kb')
+      setSize(value.length / 1024);
+
+      setMarkHtml(value);
+      // 格式化Code高亮
+      parseCode();
+
+      // 存储持久化
+      props.setContent(value);
+    }
   };
 
   const setMarkHtml = (value) => {
@@ -51,10 +64,6 @@ const App = (props) => {
       highlightjs.highlightBlock(block);
     })
   }
-
-  // const handleChange = () => {
-  //   return require('./template');
-  // }
 
   useEffect(() => {
     // 调整CodeMirror高度
@@ -101,6 +110,8 @@ const App = (props) => {
             <label style={{ marginLeft: 20 }}>Macdown编辑器</label>
           </div>
         </div>
+        
+        <MyProgress size={size}/>
 
         <div id="preview" className='preview'>
           <div id='copy' className='content'>
