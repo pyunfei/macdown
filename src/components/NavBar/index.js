@@ -1,7 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
-import { Menu, Dropdown, message, Button, Avatar, Tooltip, Popover, Modal } from 'antd';
+import { Menu, Dropdown, message, Button, Tooltip, Modal } from 'antd';
 import { DownOutlined, CopyOutlined, CloudDownloadOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+
+// import { createContent, itemContent, getContent, updateContent } from '../../api/content';
 
 import { connect } from 'react-redux';
 import actions from '../../store/actions/navbar'
@@ -14,6 +16,7 @@ import { saveAs, htmlTemplate } from "../../util/FileSaver";
 
 import MyModule from './component/module';
 import MyTimeLine from './component/timeline';
+// import FormModule from './component/formModule';
 
 import './NavBar.css';
 
@@ -83,13 +86,13 @@ const NavBar = (props) => {
         <h3 style={{ color: 'black' }}>
           Macdown
         <a
-          rel="noopener noreferrer"
-          target="_blank"
-          href="https://github.com/pyunfei/macdown"
-          style={{ border:'none' }}
-        >
-          <img alt="github" style={{width: "70px", height: '20px', marginLeft: "10px", display: "inline-block"}}  src="https://badgen.net/github/stars/pyunfei/macdown" />
-        </a>
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://github.com/pyunfei/macdown"
+            style={{ border: 'none' }}
+          >
+            <img alt="github" style={{ width: "70px", height: '20px', marginLeft: "10px", display: "inline-block" }} src="https://badgen.net/github/stars/pyunfei/macdown" />
+          </a>
         </h3>
         <p>可自定义样式的Macdown编辑器</p>
         <h3 style={{ color: 'black' }}>关于</h3>
@@ -114,6 +117,29 @@ const NavBar = (props) => {
   const _copyFile = ({ key }) => copy[key]();
 
   const _switchHelp = ({ key }) => help[key]();
+
+  // const _uploadMD = (data) => {
+  //   const value = window.localStorage.getItem('CONTENT');
+  //   if (!value) {
+  //     message.warning('当前无提交内容')
+  //   } else {
+  //     updateContent({
+  //       ...data,
+  //       content: value,
+  //       id: "5e672637ebee35253123bd55"
+  //     }).then(res => {
+  //       message.success('ok')
+  //       console.log(res)
+  //     }).catch(_err => {
+  //       message.error("提交错误, 请返回重试");
+  //     })
+  //   }
+  // }
+
+  // useEffect(() => {getContent({
+  //   pageNum: 1,
+  //   pageSize: 5
+  // }).then(res => console.log(res.list))}, []);
 
   const menuStyle = (
     <Menu onClick={_switchStyle}>
@@ -219,7 +245,7 @@ const NavBar = (props) => {
             帮助 <DownOutlined />
           </a>
         </Dropdown>
-        {/* 自定义模态框 */}
+        {/* 自定义无交互模态框 */}
         <MyModule
           visible={visible}
           title={title}
@@ -230,6 +256,21 @@ const NavBar = (props) => {
       </div>
     </div>
     <div className='navbar-right'>
+      {/* <div className='nav-item'>
+        <Tooltip title="上传文本MD">
+          <Button onClick={() => setVisible(true)} type="primary" icon={<CloudUploadOutlined />}>
+            上传
+          </Button>
+        </Tooltip>
+        自定义提交交互模态框
+        <FormModule
+          title='上传'
+          visible={visible}
+          onOk={onOk}
+          onCancel={onCancel}
+          _uploadMD={(data) => _uploadMD(data)}
+        />
+      </div> */}
       <div className='nav-item'>
         <Tooltip title="文档示例">
           <Button onClick={writModule} type="primary" danger icon={<QuestionCircleOutlined />}>
@@ -237,7 +278,6 @@ const NavBar = (props) => {
           </Button>
         </Tooltip>
       </div>
-
       <div className='nav-item'>
         <Dropdown.Button
           overlay={menuCopy}
@@ -264,11 +304,11 @@ const NavBar = (props) => {
           文件下载
         </Dropdown.Button>
       </div>
-      <div className='nav-item'>
+      {/* <div className='nav-item'>
         <Popover placement="bottom" content='' title="一位低调,大器晚成的负二代">
           <Avatar size="large">雲飛</Avatar>
         </Popover>
-      </div>
+      </div> */}
       <div className='nav-item-github'>
         <a href="https://github.com/pyunfei" className='item-github'>
           <img className='github-img' src={require('../../assets/github.svg')} alt="" />

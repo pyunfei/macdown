@@ -1,0 +1,1 @@
+scp -r build/ root@120.79.37.193:/usr/share/nginx 

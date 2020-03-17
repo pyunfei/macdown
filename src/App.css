@@ -65,14 +65,18 @@ html, body {
 }
 
 
-.title {
-  margin-left: 10px !important;
-  font-size: 24px !important;
-  border: none !important;
-}
-
-.title:focus {
-  box-shadow: none !important;
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: #000;
+  opacity: 0.5;
 }
 
 .CodeMirror {

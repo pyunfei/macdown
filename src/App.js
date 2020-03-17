@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Spin } from 'antd';
 import { UnControlled as CodeMirror } from 'react-codemirror2'
 import 'codemirror/mode/markdown/markdown';
 import showdown from 'showdown';
@@ -11,7 +12,6 @@ import NavBar from './components/NavBar'
 import MyProgress from './components/Progress'
 
 import highlightjs from './util/langHiglight';
-import 'highlight.js/styles/atom-one-light.css'
 
 import 'codemirror/addon/scroll/simplescrollbars.css'
 import 'codemirror/addon/scroll/simplescrollbars'
@@ -26,12 +26,13 @@ showdown.setFlavor('github');
 
 const App = (props) => {
   const [size, setSize] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onContentChange = (editor, data, value) => {
     // console.log(parseInt((value.length / 1024 / 100) * 100))
-    if(parseInt((value.length / 1024 / 100) * 100) > 100) {
+    if (parseInt((value.length / 1024 / 100) * 100) > 100) {
       return
-    }else {
+    } else {
       // 计算当前字节数
       // console.log(value.length / 1024 + 'kb')
       setSize(value.length / 1024);
@@ -74,6 +75,10 @@ const App = (props) => {
       }
     }, 100);
   }, []);
+  
+  useEffect(() => {
+    setIsLoading(props.content.loading)
+  }, [props.content.loading]);
 
   useEffect(() => {
     // init
@@ -110,8 +115,8 @@ const App = (props) => {
             <label style={{ marginLeft: 20 }}>Macdown编辑器</label>
           </div>
         </div>
-        
-        <MyProgress size={size}/>
+
+        <MyProgress size={size} />
 
         <div id="preview" className='preview'>
           <div id='copy' className='content'>
@@ -122,6 +127,13 @@ const App = (props) => {
           </div>
         </div>
       </div>
+
+      {/* 页面级别loading */}
+      {
+        isLoading && <div className='loading'>
+          <Spin size="large" />
+        </div>
+      }
     </div>
   );
 };
